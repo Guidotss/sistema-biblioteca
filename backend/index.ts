@@ -1,5 +1,6 @@
 import express, { application } from "express"; 
 import morgan from "morgan";
+import cors from "cors";
 import dotenv from "dotenv";
 import BooksRouter from "./routes/books.routes"
 import "./dataBase/connect"
@@ -9,6 +10,7 @@ const app = express();
 
 app.use(express.json()); 
 app.use(morgan("dev"));
+app.use(cors());
 app.use("/",BooksRouter);
 
 const PORT:string|undefined = process.env.PORT;
