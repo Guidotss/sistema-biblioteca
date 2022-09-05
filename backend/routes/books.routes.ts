@@ -1,17 +1,19 @@
 import { Router } from "express"; 
-import { getAll,getBookById,editBookInfo,deleteBook,createBook,getBookByName } from "../controllers/books.controllers";
+import { getAll,getBookById,editBookInfo,deleteBook,createBook,getBooksByName,getBooksByAuthor } from "../controllers/books.controllers";
 
 const router  = Router();
 
 router.get("/api",async(req,res) =>{
-    const {id,name} = req.query;
-    if(id && !name){
+    const {id,name,author} = req.query;
+    if(id && !name && !author){
         const book = await getBookById(String(id));
         res.json(book);
-    }else if(name && !id){
-        const book = await getBookByName(String(name));
+    }else if(name && !id && !author){
+        const book = await getBooksByName(String(name));
         res.json(book);
-    }else if(id && name){
+    }else if(author && !id && !name){
+
+    }else if(id && name && author){
         const book = await getBookById(String(id));
         res.json(book);
     }else if(!id && !name){

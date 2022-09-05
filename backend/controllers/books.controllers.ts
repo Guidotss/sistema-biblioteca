@@ -10,7 +10,7 @@ export async function getAll():Promise<Object | null | undefined>{
     }
 }
 
-export async function getBookById(id:string):Promise <Object |null|undefined>{
+export async function getBookById(id:string):Promise <Object | null |undefined>{
 
     try{
         const book = await booksModel.findById(id); 
@@ -48,7 +48,7 @@ export async function createBook(book:Object):Promise<Object | undefined>{
     }
 }
 
-export async function editBookInfo(id:string, info:Object):Promise<Object | undefined | null>{
+export async function editBookInfo(id:string, info:Object):Promise<Object | null | undefined>{
     try{
         const book = await booksModel.findByIdAndUpdate(id, info);
         return book;
@@ -57,7 +57,7 @@ export async function editBookInfo(id:string, info:Object):Promise<Object | unde
     }
 }
 
-export async function deleteBook(id:string):Promise<object | undefined | null>{
+export async function deleteBook(id:string):Promise<object | undefined | null | undefined>{
     try {
         const book = await booksModel.findByIdAndDelete(id);
         return book;
