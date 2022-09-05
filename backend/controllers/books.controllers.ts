@@ -20,10 +20,19 @@ export async function getBookById(id:string):Promise <Object |null|undefined>{
     }
 } 
 
-export async function getBookByName(name:string):Promise<Object | null | undefined>{
+export async function getBooksByName(name:string):Promise<Object | null | undefined>{
     try{
-        const book = await booksModel.findOne({name:name});
+        const book = await booksModel.find({name:name});
         return book;
+    }catch(err){
+        console.log(err);
+    }
+}
+
+export async function getBooksByAuthor(author:string):Promise<Object | null | undefined>{
+    try{
+        const books = await booksModel.find({author:author}); 
+        return books;
     }catch(err){
         console.log(err);
     }

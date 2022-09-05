@@ -12,14 +12,37 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const books_controllers_1 = require("../controllers/books.controllers");
 const router = (0, express_1.Router)();
-router.get("/api", (_req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    res.json(yield (0, books_controllers_1.getAll)());
+router.get("/api", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { id, name } = req.query;
+    if (id && !name) {
+        const book = yield (0, books_controllers_1.getBookById)(String(id));
+        res.json(book);
+    }
+    else if (name && !id) {
+        const book = yield (0, books_controllers_1.getBookByName)(String(name));
+        res.json(book);
+    }
+    else if (id && name) {
+        const book = yield (0, books_controllers_1.getBookById)(String(id));
+        res.json(book);
+    }
+    else if (!id && !name) {
+        const books = yield (0, books_controllers_1.getAll)();
+        res.json(books);
+    }
 }));
-router.post("/api/books", (req, res) => {
-    res.send("Hello World");
-});
-router.post("/api", (req, res) => {
-    res.send("Hello World");
+router.post("/api/books", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const newBook = req.body;
+    if (JSON.stringify(newBook) == "{}") {
+        res.json({
+            message: "Please provide a book"
+        });
+    }
+    else {
+        yield (0, books_controllers_1.createBook)(newBook);
+    }
+}));
+router.put("/api", (req, res) => {
 });
 router.delete("/api", (req, res) => {
     res.send("Hello World");

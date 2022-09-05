@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getAll = void 0;
+exports.deleteBook = exports.editBookInfo = exports.createBook = exports.getBookByName = exports.getBookById = exports.getAll = void 0;
 const books_model_1 = __importDefault(require("../models/books.model"));
 function getAll() {
     return __awaiter(this, void 0, void 0, function* () {
@@ -26,3 +26,63 @@ function getAll() {
     });
 }
 exports.getAll = getAll;
+function getBookById(id) {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            const book = yield books_model_1.default.findById(id);
+            return book;
+        }
+        catch (err) {
+            console.log(err);
+        }
+    });
+}
+exports.getBookById = getBookById;
+function getBookByName(name) {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            const book = yield books_model_1.default.findOne({ name: name });
+            return book;
+        }
+        catch (err) {
+            console.log(err);
+        }
+    });
+}
+exports.getBookByName = getBookByName;
+function createBook(book) {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            const newBook = yield books_model_1.default.create(book);
+            return newBook;
+        }
+        catch (err) {
+            console.log(err);
+        }
+    });
+}
+exports.createBook = createBook;
+function editBookInfo(id, info) {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            const book = yield books_model_1.default.findByIdAndUpdate(id, info);
+            return book;
+        }
+        catch (err) {
+            console.log(err);
+        }
+    });
+}
+exports.editBookInfo = editBookInfo;
+function deleteBook(id) {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            const book = yield books_model_1.default.findByIdAndDelete(id);
+            return book;
+        }
+        catch (error) {
+            console.log(error);
+        }
+    });
+}
+exports.deleteBook = deleteBook;
