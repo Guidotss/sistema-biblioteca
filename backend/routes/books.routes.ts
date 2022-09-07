@@ -12,11 +12,12 @@ router.get("/api",async(req,res) =>{
         const book = await getBooksByName(String(name));
         res.json(book);
     }else if(author && !id && !name){
-
+        const book = await getBooksByAuthor(String(author));
+        res.json(book);
     }else if(id && name && author){
         const book = await getBookById(String(id));
         res.json(book);
-    }else if(!id && !name){
+    }else if(!id && !name && !author){
         const books = await getAll();
         res.json(books);
     }
