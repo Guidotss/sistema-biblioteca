@@ -1,6 +1,7 @@
 import { useContext } from "react"
 import { BooksContext } from "../../context/BooksContext"
 import { BookItem } from "./BookItem"
+import "./books.css"
 
 
 export const Books = () => {
@@ -8,7 +9,7 @@ export const Books = () => {
     if(data.length == undefined || data.length == 0) return;
 
   return (
-    <div>
+    <div className="books">
         {
             data.map(book => {
                 return(

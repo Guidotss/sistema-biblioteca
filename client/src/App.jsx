@@ -8,7 +8,7 @@ export const App = () => {
   return (
     <BooksProvider>
         <NavBar />
-        <Books />
+        <BookGrid />
     </BooksProvider>
   )
 }
