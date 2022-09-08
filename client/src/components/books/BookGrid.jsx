@@ -5,6 +5,8 @@ import { Books } from "./Books"
 export const BookGrid = () => {
     const { loading } = useContext( BooksContext )  
     return(
-        <Books />
+        loading
+        ? <h1>Loading...</h1>
+        : <Books />
     )
 }

@@ -11,7 +11,9 @@ export const Books = () => {
     <div>
         {
             data.map(book => {
-                return <BookItem data={ book }  key={book._id}/>
+                return(
+                    <BookItem data={ book } key={ book._id }/>
+                )
             })
         }
     </div>
