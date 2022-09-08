@@ -1,12 +1,13 @@
 import booksModel from "../models/books.model";
 
 export class Book{
-    private model:typeof booksModel;
+    private model; 
     constructor(){
         this.model = booksModel;
-    }
+    } 
 
     public async getBooks():Promise<Object>{
+        
         try{
             const books = await this.model.find();
             return books; 
