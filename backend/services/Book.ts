@@ -1,7 +1,7 @@
 import booksModel from "../models/books.model";
 
-export class Book{
-    private model; 
+export  class Book{
+    private model;
     constructor(){
         this.model = booksModel;
     } 

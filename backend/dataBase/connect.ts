@@ -3,7 +3,7 @@ import Config from "./config";
 
 export const connectDB = async () => {
     try{
-        mongoose.connect(Config.urlLocal, Config.options)
+        mongoose.connect(Config.urlAtlas, Config.options)
             .then(() =>{
                 console.log("DB Connected");
             })
