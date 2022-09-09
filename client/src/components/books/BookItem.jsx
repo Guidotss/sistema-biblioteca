@@ -11,7 +11,7 @@ export const BookItem = ({ data }) => {
       <div className='card-body'>
         <h2>{data.title}</h2>
         <h3>{data.author}</h3>
-        
+        <button className='btn btn-outline btn-warning'>Add cart</button>
       </div>
     </div>
   )

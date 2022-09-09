@@ -1,24 +1,35 @@
 import { useState, useEffect } from "react";
-import { getAllBooks } from "../api/books.api"
+import { getBooks } from "../helpers/getBooksHelper"; 
 
 export const useFetch = () =>{
-    const [data, setData] = useState({});   
+    const [data, setData] = useState({}); 
+    const [bookAuthor,setBookAuthor] = useState({});
     const [loading, setLoading] = useState(true);
+    const [isFormSend, setIsFormSend] = useState(false);
 
-    const getBooks = async () =>{
-        const books = await getAllBooks();
+    const getAllBooks = async () =>{
+        const books = await getBooks(bookAuthor);
         setData(books);
         setLoading(false);
     }
-
+    useEffect(() => {
+        getAllBooks();
+        setLoading(true);
+        setIsFormSend(false);
+    },[isFormSend]);
+    
     useEffect(() =>{
-        getBooks();
-        setLoading(false);
+        getAllBooks();
+        setLoading(true);
+        setIsFormSend(false);
     },[]); 
 
 
     return {
         data,
-        loading
+        loading,
+        isFormSend,
+        setBookAuthor,
+        setIsFormSend,
     }
 }

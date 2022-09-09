@@ -6,8 +6,9 @@ export const NavBar = () => {
     <header>
         <h1>Biblioteca</h1>
         <nav>
-            <Form/>
+            <Form/> 
         </nav>
+        <button className="btn btn-outline btn-success">Advanced Search</button>
     </header>
   )
 }
