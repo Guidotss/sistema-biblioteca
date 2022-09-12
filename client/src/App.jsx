@@ -1,14 +1,13 @@
-import { BookGrid, NavBar } from "./components/barrel"; 
-import { BooksProvider } from "./context/BooksProvider"; 
-import { Books } from "./components/books/Books";
-import "./app.css"; 
-import { BookItem } from "./components/books/BookItem";
+import { useState } from 'react'
+import { AppRoutes } from './router/AppRoutes'
 
-export const App = () => {
-  return (
-    <BooksProvider>
-        <NavBar />
-        <BookGrid />
-    </BooksProvider>
+
+function App() {
+
+  return(
+    <AppRoutes/>
   )
+  
 }
+
+export default App
