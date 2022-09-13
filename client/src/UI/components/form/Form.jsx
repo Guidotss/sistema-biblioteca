@@ -1,22 +1,23 @@
 import { useNavigate,useLocation } from 'react-router-dom'; 
 import queryString from 'query-string';
 import { useForm,useFetch } from '../../../hooks/index';
+
+
 import './form.css'
 
 export const Form = () => {
     
   const navigate = useNavigate(); 
-  const location = useLocation();
-  const {query=''}  = queryString.parse(location.search);
+  const { q='' } = queryString.parse(useLocation().search);
 
-    const { bookInfo,onInputchange } = useForm({
-      bookInfo:query
+    const { bookInfo,onInputchange,onResetForm } = useForm({
+      bookInfo:q
     }); 
-
-    const { data } = useFetch(); 
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        onResetForm();
+        navigate(`/search?q=${bookInfo}`);
     } 
 
   return (

@@ -13,7 +13,7 @@ export const BookCard = ({ bookData }) => {
                         <h3 className="card-text">{bookData.author}</h3>
                     </div>
                     <button className='btn btn-outline-warning'>
-                        <Link to={`${bookData._id}`} >Mas...</Link>
+                        <Link to={`/books/${bookData._id}`} >Mas...</Link>
                     </button>
                 </div>
             </div>
