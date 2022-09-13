@@ -1,0 +1,19 @@
+form{
+    margin-left:200px; 
+    margin-top: 5px;
+    margin-bottom: -20px;
+}
+
+form input{
+    width: 400px;
+    height: 45px;
+    border-radius: 5px;
+    margin-left: 300px;
+    border: none;
+}
+form button{
+    height: 45px;
+    width: 100px;
+    margin-top: -74px; 
+    margin-left: 710px;
+}

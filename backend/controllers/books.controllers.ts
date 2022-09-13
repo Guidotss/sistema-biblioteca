@@ -17,6 +17,20 @@ export async function getBooks(req:Request,res:Response):Promise<Response>{
     }
 }
 
+export async function getBookById(req:Request,res:Response):Promise<Response>{
+    try{
+
+        const { id } = req.params;
+        const bookById = await book.getBookById(String(id));
+        return res.status(200).json(bookById);
+
+    }catch(err){
+
+        console.log(err);
+        return res.status(500).json({message:err});
+    }
+}
+
 export async function getBooksByAuthor(req:Request,res:Response):Promise<Response>{
     try{
 

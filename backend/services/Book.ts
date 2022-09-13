@@ -17,6 +17,16 @@ export  class Book{
         }
     }
 
+    public async getBookById(id:string):Promise<Object | null>{
+        try{
+            const book = await this.model.findById({_id:id});
+            return book;
+        }catch(err){
+            console.log(err);
+            throw new Error(`Error: ${err}`);
+        }
+    }
+
     public async getBooksByAuthor(author:string):Promise<Object>{
         try{
             const books = await this.model.find({author:author});
